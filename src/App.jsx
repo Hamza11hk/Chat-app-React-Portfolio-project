@@ -4,6 +4,9 @@ import { auth, db } from './firebase'
 import { useAuthsate } from 'react-firebase-hooks'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { addDoc, collection } from 'firebase/firestore'
+import Chat from './components/Chat'
+import RoomForm from './components/RoomForm'
+
 
 function App() {
   const [user] = useAuthsate(auth)
@@ -13,7 +16,7 @@ function App() {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider);
     const { uid, displayName, photoURL } = await auth.currentUser;
-    await addDoc(collection(db, "Users") {
+    await addDoc(collection(db, "Users"), {
       name: displayName,
       avatar: photoURL,
       createdAt: Date.now(),
@@ -55,6 +58,14 @@ function App() {
           Welcome to Chat Room, Sign In Now.
           
         </div>
+      }
+
+      {
+        user && currentRoom && <Chat setCurrentRoom={setCurrentRoom} room= {currentRoom} />
+      }
+      
+      {
+        user  && !currentRoom && <RoomForm setCurrentRoom={setCurrentRoom}/>
       }
 
     </div>
