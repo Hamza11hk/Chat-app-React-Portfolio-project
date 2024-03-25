@@ -66,7 +66,18 @@ const Chat = ({ room, setCurrentRoom }) => {
 
   return (
     <div className='mt-4 w-full border-2 bg-slate-200 shadow-xl rounded-xl p-4 group-has-[80%] flex flex-col relative'>
-
+        <div className='absolute left-1 top-1 p-3 text-white bg-red-500 rounded-xl text-xm z-[30]'>
+            Leave
+        </div>
+        <div className='w-full overflow-auto h-[90%] pt-10' ref={scrollRef}>
+            {
+                messages?.map(curr => {
+                    return(
+                        <div>messages</div>
+                    )
+                })
+            }
+        </div>
     </div>
   )
 }
