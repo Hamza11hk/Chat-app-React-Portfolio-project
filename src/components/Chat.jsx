@@ -78,6 +78,24 @@ const Chat = ({ room, setCurrentRoom }) => {
                 })
             }
         </div>
+        
+        <div className='w-full rounded-lg text-sm flex justify-between absolute bottom-2 left-0 px-2 gap-2'>
+         
+            <input type="text" onKeyUp={(e) => {
+            
+            if(e.key === 'Enter') sendMessage()
+            
+            }} onChange={(e) => setMessage(e.target.value)} 
+            
+            className='flex-1 p-3 overflow-auto border-2 rounded-xl'
+
+            autoFocus value={message} />
+
+            <button onClick={sendMessage} className='border-2 p-3 rounded-xl bg-green-600 text-white'>
+                Send
+            </button>
+        </div>
+
     </div>
   )
 }
