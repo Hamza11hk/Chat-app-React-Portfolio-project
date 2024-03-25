@@ -1,9 +1,9 @@
-import React, {userRef} from 'react'
+import React, {useRef} from 'react'
 
 const RoomForm = ({ setCurrentRoom }) => {
 
 
-    let inputRef  = userRef(null)
+    let inputRef  = useRef(null)
 
 
   return (
