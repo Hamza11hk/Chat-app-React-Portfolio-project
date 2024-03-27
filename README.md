@@ -18,10 +18,12 @@ This project is aimed at creating a real-time chat application using ReactJS, in
 - Netlify: Recommended platforms for deploying your application.
 ## Getting Started
 To start working on this project, follow these steps:
-- Clone the repository: 'git clone <https://github.com/Hamza11hk/Chat-app-React-Portfolio-project.git>'
-- Navigate to the project directory: 'cd project-directory'
+- Clone the repository to your local machine
+- Navigate to the project directory
 - Install dependencies: 'npm install'
-- Start the development server: 'npm start'
+- Create a `.env` file in the root directory of the project.
+- Don't forgoet to add to your .env file your Firebase_Key/App_ID/Sender_ID
+- Start the development server: 'npm run dev'
 ## Contribution
 Contributions are welcome! If you have any suggestions, improvements, or feature requests, feel free to open an issue or create a pull request.
 ## License
