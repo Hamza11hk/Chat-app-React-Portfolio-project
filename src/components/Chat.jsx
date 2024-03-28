@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { auth } from '../firebase'
-import { addDoc, collection, limit, query, orderBy, limit, onSnapshot, QuerySnapshot } from 'firebase/firestore'
+import { addDoc, collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore'
+import Message from './Message'
+import { db } from '../firebase';
 
 
 const Chat = ({ room, setCurrentRoom }) => {
@@ -9,6 +11,7 @@ const Chat = ({ room, setCurrentRoom }) => {
 
     const [message, setMessage] = useState('') // this is input.  
     
+
     
     const sendMessage = async() => {
         if(message.trim() === "") {
@@ -26,7 +29,7 @@ const Chat = ({ room, setCurrentRoom }) => {
         uid
     })
 
-    sendMessage('')
+    setMessage('')
     // scroll to the bottom of messages.
     scrollRef.current.scroll({top: scrollRef.current.scrollHeight, behavior: 'smooth'})
         
@@ -35,16 +38,18 @@ const Chat = ({ room, setCurrentRoom }) => {
     useEffect(() => {
 
         const q = query(
-            collection(db, room) ,
+            collection(db, room),
             orderBy("createdAt"),
             limit(50)
         )
 
-        const unsubscribe = () => onSnapshot(q, (snapshot)=> {
+        const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+
             let thesemessages = [];
+
             QuerySnapshot.forEach((doc) => {
 
-                thesemessages.push( { ...doc.data(), id: doc.id})
+                thesemessages.push({ ...doc.data(), id: doc.id })
                 
             })
             setMessages(thesemessages)
@@ -65,15 +70,31 @@ const Chat = ({ room, setCurrentRoom }) => {
     let scrollRef = useRef(null)
 
   return (
-    <div className='mt-4 w-full border-2 bg-slate-200 shadow-xl rounded-xl p-4 group-has-[80%] flex flex-col relative'>
-        <div className='absolute left-1 top-1 p-3 text-white bg-red-500 rounded-xl text-xm z-[30]'>
-            Leave
+    <div className='mt-4 w-full border-2 bg-slate-200 shadow-xl rounded-xl p-4 h-[80%] flex flex-col relative'>
+        <div onClick={() => setCurrentRoom('')} className='absolute left-1 top-1 p-2 text-white bg-gray-800 rounded-xl text-xm z-[30]'>
+            Exit
         </div>
         <div className='w-full overflow-auto h-[90%] pt-10' ref={scrollRef}>
             {
                 messages?.map(curr => {
                     return(
-                        <div>messages</div>
+                        
+                        <Message
+                        
+                        key={curr.uid}
+
+                        userName={curr.displayName}
+
+                        text={curr.text}
+
+                        imageSource={curr.avatar}
+
+                        isOfUser={auth.currentUser.displayName === curr.name}
+
+                        createdAt={curr.createdAt}
+                        
+                        />
+
                     )
                 })
             }
@@ -91,7 +112,7 @@ const Chat = ({ room, setCurrentRoom }) => {
 
             autoFocus value={message} />
 
-            <button onClick={sendMessage} className='border-2 p-3 rounded-xl bg-green-600 text-white'>
+            <button onClick={sendMessage} className='border-2 p-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-900 text-white'>
                 Send
             </button>
         </div>
