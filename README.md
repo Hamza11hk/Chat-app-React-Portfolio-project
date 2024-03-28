@@ -20,10 +20,10 @@ This project is aimed at creating a real-time chat application using ReactJS, in
 To start working on this project, follow these steps:
 - Clone the repository to your local machine
 - Navigate to the project directory
-- Install dependencies: 'npm install'
+- Install dependencies: `npm install`
 - Create a `.env` file in the root directory of the project.
-- Don't forget to add in .env file your Firebase_Key/App_ID/Sender_ID
-- Start the development server: 'npm run dev'
+- Don't forget to add in .env file your `Firebase_Key/App_ID/Sender_ID`
+- Start the development server: `npm run dev`
 ## Contribution
 Contributions are welcome! If you have any suggestions, improvements, or feature requests, feel free to open an issue or create a pull request.
 ## License
