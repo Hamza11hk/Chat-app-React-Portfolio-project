@@ -5,16 +5,14 @@ This project is aimed at creating a real-time chat application using ReactJS, in
 ## Learning Objectives
 
 - Practice ReactJS
-- Socket.IO Integration
 - Designing a user-friendly interface
 - Managing State
 - Implementing Authentication
 - Using Firebase
 ## Technologies and Tools Used
 - ReactJS: A JavaScript library for building dynamic user interfaces.
-- Socket.IO: A library facilitating real-time, bidirectional, and event-based communication.
-- Node.js: A JavaScript runtime built on Chrome's V8 JavaScript engine, used for the backend server.
-- FireBase: set of backend cloud computing services and application development platforms provided by Google
+- FireBase: set of backend cloud computing services and application development platforms provided by Google.
+- Vite: a build tool that focuses on providing a fast development experience by leveraging modern JavaScript features and dependency management techniques.
 - Netlify: Recommended platforms for deploying your application.
 ## Getting Started
 To start working on this project, follow these steps:
